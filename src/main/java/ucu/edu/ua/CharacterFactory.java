@@ -1,20 +1,39 @@
 package ucu.edu.ua;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Random;
 
 public class CharacterFactory {
     private static Random RANDOM = new Random();
+    private static final List<Class<? extends Character>> characterTypes = List.of(
+        Hobbit.class,
+        King.class,
+        Knight.class,
+        Elf.class
+    );
+//InvocationTargetExceptionJava,NoSuchMethodException,IllegalAccessExceptionJava,InstantiationExceptionJava
+    public static Character createCharacter() {
+            int randomNumber = new Random().nextInt(characterTypes.size());
+            Class<?> result = characterTypes.get(randomNumber);
 
-    public static List<Class<?>> characterTypes 
-        = List.of(Hobbit.class, King.class, Knight.class);
-
-    public static Character createCharacter2(){
-        characterTypes.get(RANDOM.nextInt(3));
-        return null;
+            try {
+                return (Character) result.getDeclaredConstructor().newInstance();
+            } catch (InstantiationException | IllegalAccessException |
+                    InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+                return null;
+            }
     }
 
-    public static Character createCharacter(){
+    
+
+    // public static Character createCharacter2(){
+    //     characterTypes.get(RANDOM.nextInt(3));
+    //     return null;
+    // }
+
+    public static Character createCharacterSwitchCase(){
         int randomNumber = RANDOM.nextInt(3);
         switch (randomNumber) {
             case 0:

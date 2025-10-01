@@ -10,4 +10,8 @@ public class King extends Noble {
     public void kick(Character enemy) {
         getKickStrategy().kick(this, enemy);
     }
+    @Override
+    public String toString() {
+        return "King{hp=" + getHp() + ", power=" + getPower() + "}";
+    }
 }

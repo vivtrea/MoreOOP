@@ -10,6 +10,10 @@ public class Hobbit extends Character {
     public void kick(Character c) {
         getKickStrategy().kick(this, c);
     }
+    @Override
+    public String toString() {
+        return "Hobbit{hp=" + getHp() + ", power=" + getPower() + "}";
+    }
     // private void toCry(){
     //     System.out.println("Cry a lot!");
     // }

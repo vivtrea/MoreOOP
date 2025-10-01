@@ -11,4 +11,8 @@ public class Elf extends Character{
         getKickStrategy().kick(this, enemy);
         
     }
+    @Override
+    public String toString() {
+        return "Elf{hp=" + getHp() + ", power=" + getPower() + "}";
+    }
 }

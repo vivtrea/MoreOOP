@@ -10,6 +10,9 @@ public abstract class Character {
     private int power;
     private int hp;
     private KickStrategy kickStrategy;
+    public void setHp(int hp){
+        this.hp = hp > 0 ? hp: 0;
+    }
 
     public boolean isAlive() {
         return hp > 0;
